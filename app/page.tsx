@@ -3,116 +3,120 @@ export default function Page() {
     <main className="min-h-screen bg-white text-gray-900">
 
       {/* HERO */}
-      <section className="h-[80vh] flex items-center justify-center bg-gray-900 text-white text-center p-6">
-        <div>
-          <h1 className="text-5xl font-bold mb-4">
+      <section className="relative h-[85vh] flex items-center justify-center text-white text-center bg-[url('/hotel.jpg')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <div className="relative z-10 px-6">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
             Hotel Tolea
           </h1>
-          <p className="text-xl opacity-80">
-            Cazare 4★ în Târgoviște – confort, liniște și eleganță
+
+          <p className="mt-4 text-lg md:text-xl text-gray-200">
+            Confort premium în Târgoviște • Liniște • Eleganță • Relaxare
           </p>
 
-          <a
-            href="#rezervari"
-            className="inline-block mt-6 bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold"
-          >
-            Rezervă acum
-          </a>
+          <div className="mt-8 flex gap-4 justify-center flex-wrap">
+            <a
+              href="#camere"
+              className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200"
+            >
+              Vezi camerele
+            </a>
+
+            <a
+              href="#contact"
+              className="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-400"
+            >
+              Rezervă acum
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* INFO BAR */}
+      <section className="grid md:grid-cols-3 text-center border-b">
+        <div className="p-6">
+          <p className="font-semibold">📍 Locație centrală</p>
+          <p className="text-sm text-gray-500">Târgoviște</p>
+        </div>
+
+        <div className="p-6">
+          <p className="font-semibold">⭐ Hotel 4 stele</p>
+          <p className="text-sm text-gray-500">Confort garantat</p>
+        </div>
+
+        <div className="p-6">
+          <p className="font-semibold">🕒 Recepție 24/7</p>
+          <p className="text-sm text-gray-500">Non-stop suport</p>
         </div>
       </section>
 
       {/* DESPRE */}
-      <section className="max-w-5xl mx-auto p-10 text-center">
-        <h2 className="text-3xl font-bold mb-4">Despre hotel</h2>
-
-        <p className="text-gray-700 leading-relaxed">
-          Hotel Tolea este un hotel de 4 stele situat în Târgoviște,
-          pe Strada Liniștei nr. 28–31, oferind camere moderne,
-          restaurant, parcare și servicii complete pentru turiști și business.
+      <section className="max-w-5xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold mb-4">Despre noi</h2>
+        <p className="text-gray-600 leading-relaxed">
+          Hotel Tolea oferă servicii de cazare moderne în Târgoviște,
+          combinând confortul camerelor elegante cu servicii profesionale.
+          Este alegerea ideală atât pentru turiști, cât și pentru călătorii de afaceri.
         </p>
       </section>
 
       {/* CAMERE */}
-      <section className="bg-gray-100 p-10">
-        <h2 className="text-3xl font-bold text-center mb-8">Camere</h2>
+      <section id="camere" className="bg-gray-50 py-16 px-6">
+        <h2 className="text-3xl font-bold text-center mb-10">Camere</h2>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold">Single</h3>
-            <p className="text-gray-600 mt-2">
-              Cameră confortabilă pentru șederi scurte de business.
-            </p>
-            <p className="mt-2 font-bold">~280 lei/noapte</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold">Double</h3>
-            <p className="text-gray-600 mt-2">
-              Cameră spațioasă cu pat king size și balcon.
-            </p>
-            <p className="mt-2 font-bold">~360 lei/noapte</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold">Apartament</h3>
-            <p className="text-gray-600 mt-2">
-              Suită mare, ideală pentru familii sau sejururi lungi.
-            </p>
-            <p className="mt-2 font-bold">~440 lei/noapte</p>
-          </div>
+          {[
+            { title: "Single", price: "~280 lei", desc: "Perfectă pentru business și șederi scurte." },
+            { title: "Double", price: "~360 lei", desc: "Spațioasă, confortabilă, ideală pentru 2 persoane." },
+            { title: "Apartament", price: "~440 lei", desc: "Lux și spațiu pentru șederi premium." }
+          ].map((room, i) => (
+            <div key={i} className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold">{room.title}</h3>
+              <p className="text-gray-600 mt-2">{room.desc}</p>
+              <p className="mt-4 font-bold text-lg">{room.price}/noapte</p>
+            </div>
+          ))}
 
         </div>
       </section>
 
       {/* FACILITĂȚI */}
-      <section className="p-10 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-6">Facilități</h2>
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-center mb-8">Facilități</h2>
 
-        <div className="grid md:grid-cols-2 gap-3 text-gray-700">
-          <p>✔ Restaurant & mic dejun</p>
+        <div className="grid md:grid-cols-2 gap-4 text-gray-700">
           <p>✔ WiFi gratuit</p>
           <p>✔ Parcare privată</p>
-          <p>✔ Room service</p>
+          <p>✔ Restaurant</p>
+          <p>✔ Mic dejun inclus</p>
           <p>✔ Aer condiționat</p>
+          <p>✔ Room service</p>
           <p>✔ Recepție 24/7</p>
           <p>✔ Camere izolate fonic</p>
-          <p>✔ Lift</p>
         </div>
       </section>
 
-      {/* LOCATIE */}
-      <section className="bg-gray-100 p-10 text-center">
-        <h2 className="text-3xl font-bold mb-4">Locație</h2>
-
-        <p className="mb-4 text-gray-700">
-          Str. Liniștei nr. 28–31, Târgoviște, Dâmbovița
-        </p>
-
-        <iframe
-          className="w-full h-80 rounded-xl"
-          src="https://www.google.com/maps?q=Hotel%20Tolea%20Targoviste&output=embed"
-        />
-      </section>
-
       {/* CONTACT */}
-      <section id="rezervari" className="p-10 text-center">
-        <h2 className="text-3xl font-bold mb-4">Contact & Rezervări</h2>
+      <section id="contact" className="bg-black text-white py-16 px-6 text-center">
+        <h2 className="text-3xl font-bold mb-4">Rezervări</h2>
 
-        <p>Telefon: +40 245 222 225</p>
-        <p>Email: contact@hoteltolea.ro</p>
+        <p className="text-gray-300 mb-2">Hotel Tolea – Târgoviște</p>
+        <p className="text-gray-300 mb-2">Tel: +40 245 222 225</p>
+        <p className="text-gray-300 mb-6">Email: contact@hoteltolea.ro</p>
 
         <a
           href="tel:+40245222225"
-          className="inline-block mt-4 bg-black text-white px-6 py-3 rounded-full"
+          className="inline-block bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold"
         >
           Sună acum
         </a>
       </section>
 
       {/* FOOTER */}
-      <footer className="p-6 text-center text-gray-500 text-sm">
-        © Hotel Tolea – Târgoviște
+      <footer className="text-center py-6 text-sm text-gray-500">
+        © {new Date().getFullYear()} Hotel Tolea. Toate drepturile rezervate.
       </footer>
 
     </main>
